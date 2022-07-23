@@ -1,6 +1,6 @@
 import React from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { TableContainer } from "./styles";
+import { TableContainer, Container } from "./styles";
 
 type IItemHeade = {
   name: string;
@@ -22,35 +22,39 @@ const Table: React.FC<ITableProps> = ({
   onEdit,
 }) => {
   return (
-    <TableContainer>
-      <thead>
-        <tr>
-          {headerTable.map((header, index) => {
-            return <th key={index}>{header.label}</th>;
+    <Container>
+      <TableContainer>
+        <thead>
+          <tr>
+            {headerTable.map((header, index) => {
+              return <th key={index}>{header.label}</th>;
+            })}
+            <th className="th_action">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {options.map((op, index) => {
+            return (
+              <tr key={index}>
+                {headerTable.map(({ name, format }) => {
+                  return (
+                    <td key={name}>{format ? format(op[name]) : op[name]}</td>
+                  );
+                })}
+                <td>
+                  <div className="actions">
+                    <FaEdit onClick={() => onEdit && onEdit(String(op.id))} />
+                    <FaTrash
+                      onClick={() => onDelete && onDelete(String(op.id))}
+                    />
+                  </div>
+                </td>
+              </tr>
+            );
           })}
-          <th className="th_action">Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        {options.map((op) => {
-          return (
-            <tr>
-              {headerTable.map(({ name, format }) => {
-                return <td>{format ? format(op[name]) : op[name]}</td>;
-              })}
-              <td>
-                <div className="actions">
-                  <FaEdit onClick={() => onEdit && onEdit(String(op.id))} />
-                  <FaTrash
-                    onClick={() => onDelete && onDelete(String(op.id))}
-                  />
-                </div>
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </TableContainer>
+        </tbody>
+      </TableContainer>
+    </Container>
   );
 };
 

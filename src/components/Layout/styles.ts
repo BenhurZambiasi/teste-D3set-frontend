@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 250px auto;
-  grid-template-rows: 70px auto;
-  color: #fff;
-  grid-template-areas:
-    "MH MH"
-    "CT CT";
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
 `;

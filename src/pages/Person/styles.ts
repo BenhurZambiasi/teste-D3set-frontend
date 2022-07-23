@@ -20,11 +20,22 @@ export const ContainerInfoPerson = styled.div`
   display: flex;
   width: 100%;
   gap: 1rem;
+
+  @media (max-width: 426px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContainerAddPhone = styled.div`
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 426px) {
+    justify-content: center;
+    button {
+      width: 100%;
+    }
+  }
 `;
 
 export const ContainerPhone = styled.div`
@@ -41,10 +52,21 @@ export const ContainerPhone = styled.div`
       cursor: pointer;
     }
   }
+
+  @media (max-width: 426px) {
+    flex-direction: column;
+    div {
+      width: 100%;
+    }
+  }
 `;
 
 export const ContainerActions = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+
+  @media (max-width: 426px) {
+    justify-content: center;
+  }
 `;

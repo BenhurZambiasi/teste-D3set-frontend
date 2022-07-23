@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  overflow: auto;
+`;
+
 export const TableContainer = styled.table`
   --color: rgba(255, 255, 255, 0.8);
   color: var(--color);
